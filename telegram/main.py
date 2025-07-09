@@ -5,8 +5,9 @@ from aiogram.types import WebAppInfo, InlineKeyboardButton
 from aiogram.filters import CommandStart
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from telegram.settings import BOT_TOKEN, WEB_APP_URL
+from settings import BOT_TOKEN, WEB_APP_URL
 
+print(BOT_TOKEN)
 bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
 dp = Dispatcher()
 
