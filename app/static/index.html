@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Сканер QR-кода</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+    #reader { width: 100%; max-width: 350px; margin: auto; }
+    #result { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h2>Сканируй QR / Штрих-код</h2>
+  <div id="reader"></div>
+  <div id="result"></div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Расширить окно
+
+    function onScanSuccess(decodedText, decodedResult) {
+      document.getElementById("result").innerText = "Результат: " + decodedText;
+      tg.sendData(decodedText);  // Отправляем данные в бота
+      tg.close(); // Закрыть WebApp
+      qrScanner.clear();
+    }
+
+    const qrScanner = new Html5Qrcode("reader");
+    qrScanner.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: { width: 250, height: 250 } },
+      onScanSuccess
+    );
+  </script>
+</body>
+</html>
