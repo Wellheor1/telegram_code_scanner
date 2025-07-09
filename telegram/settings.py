@@ -1,5 +1,5 @@
 BOT_TOKEN = "your-telegram-bot-token"
-WEB_APP_URL = "http://127.0.0.1:9000"
+WEB_APP_URL = "http://127.0.0.1:8000"
 
 
 try:
